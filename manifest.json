@@ -1,0 +1,16 @@
+{
+    "name": "Control de Gastos",
+    "short_name": "Control Gastos",
+    "display": "standalone",
+    "orientation": "portrait",
+    "scope": ".",
+    "start_url": "./index.html",
+    "icons": [{
+        "src": "./images/gastosIcon.png",
+        "size": "192x192",
+        "type": "image/png"
+    }
+    ]
+
+
+}

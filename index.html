@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0,
+        maximum-scale=1.0, minimum-scale=1.0">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Raleway:100,400&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/skeleton/2.0.4/skeleton.min.css">
+        <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+        <title>Control de Gastos</title>
+
+        <link rel="stylesheet" href="src/index.css">
+        <link rel="stylesheet" href="src/splash.css">
+        <link rel="manifest" href="manifest.json">
+
+        <script src="./src/App.js"></script>
+        <script src="./src/location.js"></script>
+        
+        
+        <script>
+            if("serviceWorker" in navigator){
+                navigator.serviceWorker.register("sw.js").then(reg => console.log("Registro Exsitoso", reg))
+                .catch(err => console.warn("Error al registrar el SW", err))
+            }
+        </script>
+
+    </head>
+    <body onload="actualizarVista(), getLocation()">
+        
+        <div class="container">
+            <div class="intro">
+                <h1 class="logo-header">
+                    <span class="logo">PRESU</span><span class="logo">PUESTO</span>
+                </h1>
+
+		</div>
+            </div>
+            <header>
+                <div class="tittle">
+                    <h1 class="heading">Gasto Semanal</h1>
+                    <p class="ubicacionActual">Sin Ubicacion Actual</p>
+                    
+                </div>
+
+                <div class="contenido">
+                    <div class="row">
+
+                        <div id="pregunta">
+                            <h2 class="heading">Presupuesto Total</h2>
+                            <div id="msj-error-pregunta"></div>
+                            <form>
+                                <input
+                                type="number"
+                                id="presupuestoInicial"
+                                class="u-full-width"
+                                placeholder="Presupuesto Inicial"
+                                />
+                                <input 
+                                type="button"
+                                onclick="guardarPresupuesto()"
+                                class="button-primary u-full-width"
+                                value="Crear Presupuesto"
+                                />
+                            </form>
+                        </div>
+                        <div id="divGastos">
+                            <div class="one-half column">
+                                <div id="divCrearGasto">
+                                    <form id="formGastos">
+                                        <h2 class="heading">Gastos</h2>
+                                        <div id="msj_error_creargasto"></div>
+                                        <div class="campo">
+                                            <label>Nombre del Gasto</label>
+                                            <input
+                                            type="text"
+                                            class="u-full-width"
+                                            placeholder="Ej. Transporte"
+                                            id="tipoGasto"
+                                            />
+                                        </div>
+                                        <div class="campo">
+                                            <label>Cantidad Gasto</label>
+                                            <input
+                                            type="number"
+                                            class="u-full-width"
+                                            placeholder="Ej. 500"
+                                            id="cantidad"
+                                            />
+                                        </div>
+                                        <input
+                                        type="button"
+                                        onclick="agregarGasto()"
+                                        class="button-primary u-full-width"
+                                        value="Agregar Gasto"
+                                        />
+                                        <input
+                                        type="button"
+                                        onclick="reiniciarPresupuesto()"
+                                        class="button-primary u-full-width"
+                                        value="Reiniciar"
+                                        />
+                                    </form>
+                                </div>
+                            </div>
+                            <div class="one-half column " id="divControlGastos">
+
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </header>
+            <script src="./src/splash.js"></script>
+        </div>
+    </body>
+
+</html>
